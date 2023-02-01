@@ -1,10 +1,24 @@
+const { getUserTokenService } = require('../services/userService');
+const { useErrorResponse, useSuccessResponse } = require('../utils/apiResponse');
 
 
-const userController =(async (req,res) => {
-    console.log("running")
-   return res.send(req.user);
+const getUserTokenController =(async (req,res) => {
+  const getUser = await getUserTokenService(req);
+
+  if (!getUser.success) {
+    return useErrorResponse(res, getUser.message, getUser.status);
+  }
+
+  return useSuccessResponse(res, getUser.message, getUser.data, getUser.status);
 })
 
+const userLogoutController =async (req,res) => {
+    req.logout();
+
+    return useSuccessResponse(res, "User Logout Successfully", null, "200");
+}
+
 module.exports= {
-    userController
+    getUserTokenController,
+    userLogoutController
 }
