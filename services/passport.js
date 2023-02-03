@@ -6,7 +6,7 @@ const keys = require('../config/keys');
 const User = mongoose.model('users');
 
 passport.serializeUser((user, done) => {
-  console.log(user)
+  console.log(user);
   done(null, user.id);
 });
 
@@ -26,33 +26,33 @@ passport.use(
     async (accessToken, refreshToken, profile, done) => {
       const existingUser = await User.findOne({ google_id: profile.id });
       if (existingUser) {
-        done(null, existingUser);
-      } else {
-        const newUser = await new User({ google_id: profile.id }).save();
-        done(null, newUser);
+        return done(null, existingUser);
       }
+      const newUser = await new User({ google_id: profile.id }).save();
+      done(null, newUser);
     }
   )
 );
 
 passport.use(
-  new FacebookStrategy({
-    clientID: keys.facebookClientID,
-    clientSecret: keys.facebookClientSecret,
-    callbackURL: 'http://localhost:5000/api/v1/auth/facebook/callback',
-    profileFields: [
-      'id',
-      'displayName',
-      'name',
-      'gender',
-      'picture.type(large)',
-      'email',
-    ],
-    proxy: true,
-  },
-   async (accessToken, refreshToken, profile, done) => {
-    console.log(profile)
-   }
+  new FacebookStrategy(
+    {
+      clientID: keys.facebookClientID,
+      clientSecret: keys.facebookClientSecret,
+      callbackURL: '/api/v1/auth/facebook/callback',
+      profileFields: [
+        'id',
+        'displayName',
+        'name',
+        'gender',
+        'picture.type(large)',
+        'email',
+      ],
+      proxy: true,
+    },
+    (accessToken, refreshToken, profile, done) => {
+      console.log(profile);
+    }
   )
 );
 
