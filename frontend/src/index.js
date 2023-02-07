@@ -5,11 +5,12 @@ import store from './store/store';
 import ReactDOM from 'react-dom/client';
 // import Landing from './components/Landing';
 import Navigation from './Routes/Navigation';
+import Header from './components/Header';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <BrowserRouter>  
-    <h1>Header</h1>
+    <Header />
       <Navigation />
           {/* <Route path='/dashboard' element={<Dashboard />} /> */}   
     </BrowserRouter>

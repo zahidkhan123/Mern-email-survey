@@ -6,6 +6,8 @@ const App = () => {
     <div>
       <h1>Homepage</h1>
       <Link to="landing">Landing</Link>
+      <Link to="surveys">Dashboard</Link>
+      <Link to="surveynew">New Survey</Link>
     </div>
   );
 };
