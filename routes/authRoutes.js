@@ -20,19 +20,27 @@ route.get(
   })
 );
 
-route.get('/failed/login', (req,res,next) => {
-  console.log("here")
-  res.send("login faild")
-})
+route.get('/failed/login', (req, res, next) => {
+  console.log('here');
+  res.send('login faild');
+});
 
 route.get(
   '/facebook/callback',
-  passport.authenticate('facebook',
-  {failureRedirect:'/failed/login'}
-  )
+  passport.authenticate('facebook', { failureRedirect: '/failed/login' })
 );
-route.get('/google/callback', passport.authenticate('google'));
+route.get(
+  '/google/callback',
+  passport.authenticate('google', {
+    failureRedirect: '/error',
+  }),
+  (req,res) => {
+    req.session.user = req.user;
+    res.redirect('/');
+  }
+);
 route.get('/logout', userLogoutController);
+
 route.get('/currentUser', getUserTokenController);
 
 module.exports = route;

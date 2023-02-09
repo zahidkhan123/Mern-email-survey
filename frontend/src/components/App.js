@@ -1,8 +1,18 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { login } from '../store/actions';
 import Landing from './Landing';
 
 const App = () => {
-  return (
+
+
+const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(login());
+  }, [])
+  
+   return (
     <div>
       <h1>Homepage</h1>
       <Link to="landing">Landing</Link>

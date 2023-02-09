@@ -4,7 +4,7 @@ const { useErrorResponse, useSuccessResponse } = require('../utils/apiResponse')
 
 const getUserTokenController =(async (req,res) => {
   const getUser = await getUserTokenService(req);
-
+   
   if (!getUser.success) {
     return useErrorResponse(res, getUser.message, getUser.status);
   }
