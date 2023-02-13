@@ -3,7 +3,7 @@ import {userLoginReducer} from './authReducer';
 import { surveyReducer } from './surverysReducer';
 
 const rootReducer = combineReducers({
-   auth: userLoginReducer,
+   userLogin: userLoginReducer,
    surveys :surveyReducer
 });
 

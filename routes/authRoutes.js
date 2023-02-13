@@ -29,14 +29,19 @@ route.get(
   '/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/failed/login' })
 );
+
+route.get('/login/error', (req, res, next) => {
+  res.send('google login faild');
+});
+
 route.get(
   '/google/callback',
   passport.authenticate('google', {
     failureRedirect: '/error',
   }),
   (req,res) => {
-    req.session.user = req.user;
-    res.redirect('/');
+    req.session.user = req.user; 
+    res.redirect('/surveys');
   }
 );
 route.get('/logout', userLogoutController);

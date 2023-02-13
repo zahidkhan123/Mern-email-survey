@@ -1,24 +1,22 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Provider, useDispatch } from 'react-redux';
+import store from '../store/store';
+import Navigation from '../Routes/Navigation';
 import { login } from '../store/actions';
-import Landing from './Landing';
 
 const App = () => {
 
-
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(login());
-  }, [])
+  }, []);
+
+  return (
+    
+      <div className='container'>
+        <Navigation />
+      </div>
   
-   return (
-    <div>
-      <h1>Homepage</h1>
-      <Link to="landing">Landing</Link>
-      <Link to="surveys">Dashboard</Link>
-      <Link to="surveynew">New Survey</Link>
-    </div>
   );
 };
 

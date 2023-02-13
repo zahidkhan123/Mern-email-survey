@@ -6,6 +6,7 @@ import {
 } from '../actionTypes';
 
 export const login = () => async (dispatch) => {
+  
   try {
     dispatch({
       type: USER_LOGIN_REQUEST,
@@ -14,27 +15,25 @@ export const login = () => async (dispatch) => {
     //   headers: {
     //     'Content-Type': 'application/json',
     //     withCredentials: true,
-      
+
     //   },
     // };
-    
 
     // const { data } = await axios.get(
     //   'http://localhost:5000/api/v1/auth/currentUser',
     //   config
     // );
-    const res = await fetch('http://localhost:5000/api/v1/auth/currentUser',{
-      credentials: "include"
+    
+    const res = await fetch('http://localhost:5000/api/v1/auth/currentUser', {
+      credentials: 'include',
     });
-    const {data} = await res.json();
-    const fulldata = res
-
+    const { data } = await res.json();
+    
     dispatch({
       type: USER_LOGIN_SUCCESS,
-      payload: data,
+      payload: data || false,
     });
   } catch (error) {
-
     dispatch({
       type: USER_LOGIN_FAIL,
       payload:
@@ -44,3 +43,4 @@ export const login = () => async (dispatch) => {
     });
   }
 };
+

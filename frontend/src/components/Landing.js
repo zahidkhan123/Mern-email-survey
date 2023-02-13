@@ -2,7 +2,12 @@ import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
 const Landing = () => {
-  return <h1>landing page</h1>;
+  return (
+    <div style={{textAlign:"center" }}>
+      <h1>Emaily</h1>
+      Collect the feedback from users
+    </div>
+  );
 };
 
 export default Landing;

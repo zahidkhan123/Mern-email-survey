@@ -14,8 +14,8 @@ const getUserTokenController =(async (req,res) => {
 
 const userLogoutController =async (req,res) => {
     req.logout();
-
-    return useSuccessResponse(res, "User Logout Successfully", null, "200");
+    res.redirect('/');
+    // return useSuccessResponse(res, "User Logout Successfully", null, "200");
 }
 
 module.exports= {
