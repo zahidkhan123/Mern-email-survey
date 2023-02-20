@@ -21,6 +21,9 @@ const Header = () => {
               <li>
                 <Payments />
               </li>
+              <li style={{margin:'0 10px'}}>
+                credits {isUser?.credits}
+              </li>
               <li>
                 <a href='api/v1/auth/logout'>Logout</a>
               </li>
