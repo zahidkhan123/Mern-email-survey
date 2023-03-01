@@ -8,7 +8,8 @@ import Header from './components/Header';
 import App from './components/App';
 import { Provider } from 'react-redux';
 import store from './store/store';
-
+import axios from 'axios'
+window.axios = axios
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <App />

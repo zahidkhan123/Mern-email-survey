@@ -6,7 +6,7 @@ const RecipientsSchema = require('./Recipients');
 const surveySchema = new Schema({
   title: String,
   body: String,
-  subjct: String,
+  subject: String,
   recipients: [RecipientsSchema],
   yes: { type: Number, default: 0 },
   no: { type: Number, default: 0 },

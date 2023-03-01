@@ -16,7 +16,7 @@ app.use(express.json())
 
 var corsOptions = {
   origin: 'http://localhost:3000',
-  credentials: true, // Add this line
+  credentials: true, 
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
  
 }
@@ -32,8 +32,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/billing', billingRoutes);
-app.use('/api/v1/surveys', surveyRoutes);
-
+app.use('/api/v1/survey', surveyRoutes);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`server is running on port ${PORT}`);

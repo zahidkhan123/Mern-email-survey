@@ -3,7 +3,7 @@ import Dashboard from '../components/Dashboard';
 import Header from '../components/Header';
 import Landing from '../components/Landing';
 import Login from '../components/Login';
-import SurveyNew from '../components/SurveyNew';
+import SurveyNew from '../components/surveys/SurveyNew';
 import PrivateRoutes from './ProtectedRoutes';
 
 const Navigation = () => {
@@ -12,7 +12,7 @@ const Navigation = () => {
       <Header />
       <Routes>
         <Route element={<PrivateRoutes />}>
-          <Route path='/surveynew' element={<SurveyNew />} />
+          <Route path='/survey/new' element={<SurveyNew />} />
           <Route path='/surveys' element={<Dashboard />} />
           {/* <Route path='/' element={<la />}></Route> */}
           {/* <Route path='/dashboard' element={<Dashboard />} /> */}
